@@ -23,7 +23,7 @@ classifiers = [
 dependencies = [
     "mediavocab>=1.0.0",
     "ovos-plugin-manager>=2.1",
-    "nuvem_de_som>=0.3.0",
+    "nuvem_de_som>=0.3.0a0",
 ]
 
 [project.optional-dependencies]
