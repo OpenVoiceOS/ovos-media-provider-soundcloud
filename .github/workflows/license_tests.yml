@@ -1,0 +1,12 @@
+name: License Tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  license_tests:
+    uses: OpenVoiceOS/gh-automations/.github/workflows/license-check.yml@dev
+    with:
+      install_extras: "[test]"
+    secrets: inherit
