@@ -15,8 +15,7 @@ from typing import ClassVar, List, Optional, Set
 
 from ovos_utils.log import LOG
 
-from mediavocab import Entity, MediaType, Release, Signals
-from mediavocab.taxonomy import PlaybackType
+from mediavocab import Entity, Release, Signals
 
 from ovos_plugin_manager.templates.media_provider import MediaProvider
 
@@ -24,29 +23,20 @@ from ovos_media_provider_soundcloud.version import __version__  # noqa: F401
 
 
 class SoundcloudMediaProvider(MediaProvider):
-    """Search SoundCloud's public catalog and return playable music releases.
-
-    Routing is fixed to music/playlist audio: the OCP pipeline gates this
-    provider out of non-music queries before paying for a network search.
-    """
+    """Search SoundCloud's public catalog and return playable music releases."""
 
     name: ClassVar[str] = "soundcloud"
-    media: ClassVar[Set[MediaType]] = {MediaType.MUSIC, MediaType.PLAYLIST}
-    playback_type: ClassVar[Set[PlaybackType]] = {PlaybackType.AUDIO}
 
     def __init__(self, config: Optional[dict] = None):
         super().__init__(config)
         # max results per search, overridable via plugin config
         self.max_results: int = int(self.config.get("max_results", 10))
 
-    def is_available(self) -> bool:
-        """``nuvem_de_som`` is a hard dependency and SoundCloud's search
-        endpoints need no API key, so the provider is available whenever its
-        imports resolved (network reachability is handled per-search by the
-        pipeline)."""
-        return True
-
-    def search(self, signals: Signals, lang: str = "en-us") -> List[Release]:
+    def search(self, signals: Signals, lang: str = "en-us", *,
+               supported_playback_types: Optional[Set[str]] = None,
+               blocked_genres: Optional[Set[str]] = None,
+               region: Optional[str] = None,
+               session_id: Optional[str] = None) -> List[Release]:
         """Search SoundCloud for ``signals.title`` (optionally scoped by
         ``signals.artist``) and return candidate :class:`Release` objects.
 
