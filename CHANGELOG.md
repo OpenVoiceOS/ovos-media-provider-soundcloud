@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.1a3](https://github.com/OpenVoiceOS/ovos-media-provider-soundcloud/tree/0.0.1a3) (2026-08-02)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-media-provider-soundcloud/compare/0.0.1a2...0.0.1a3)
+
+**Merged pull requests:**
+
+- chore: remove duplicate publish-alpha workflow [\#3](https://github.com/OpenVoiceOS/ovos-media-provider-soundcloud/pull/3) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.0.1a2](https://github.com/OpenVoiceOS/ovos-media-provider-soundcloud/tree/0.0.1a2) (2026-07-31)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-media-provider-soundcloud/compare/0a139538cf20f9b27ee8ac4ffceb9001d28b52b1...0.0.1a2)
